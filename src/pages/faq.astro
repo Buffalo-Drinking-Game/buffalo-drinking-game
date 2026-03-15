@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQItem from '../components/FAQItem';
+import SafetyBanner from '../components/SafetyBanner';
+import { faqItems } from '../data/faq';
+---
+
+<BaseLayout title="FAQ — Buffalo Drinking Game">
+  <section class="py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-buffalo-dark text-center mb-3">
+        Stop Arguing. Read This.
+      </h1>
+      <p class="text-center text-buffalo-gray mb-10 max-w-lg mx-auto">
+        Every Buffalo debate, settled once and for all. Send this page to
+        your group chat and never have the same argument twice.
+      </p>
+
+      <div class="space-y-3 mb-12">
+        {faqItems.map((item) => (
+          <FAQItem item={item} client:visible />
+        ))}
+      </div>
+
+      <div class="bg-buffalo-light rounded-xl p-6 text-center mb-8">
+        <h3 class="font-bold text-buffalo-dark mb-2">
+          Still confused?
+        </h3>
+        <p class="text-buffalo-gray text-sm mb-4">
+          Go read the rules. Then read them again. Then send the link to
+          whoever's being difficult. Problem solved.
+        </p>
+        <a
+          href="/rules"
+          class="inline-block px-6 py-3 bg-buffalo-primary text-white font-bold rounded-xl hover:bg-buffalo-secondary transition-colors"
+        >
+          Read the Rules
+        </a>
+      </div>
+
+      <SafetyBanner />
+    </div>
+  </section>
+</BaseLayout>

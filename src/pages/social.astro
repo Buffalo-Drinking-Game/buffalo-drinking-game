@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialWall from '../components/SocialWall';
+import SafetyBanner from '../components/SafetyBanner';
+import { socialPosts } from '../data/social';
+---
+
+<BaseLayout title="Wall of Shame — Buffalo Drinking Game" description="Real Buffalo moments from around the world. Tag #buffalodrinkinggame on X or Instagram to get featured.">
+  <section class="py-12 md:py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-buffalo-dark text-center mb-3">
+        The Wall of Shame
+      </h1>
+      <p class="text-center text-buffalo-gray mb-10 max-w-lg mx-auto">
+        Nobody is safe. These are real Buffalo moments from real people who
+        got caught. Tag <strong class="text-buffalo-primary">#buffalodrinkinggame</strong> to
+        earn your spot on the wall.
+      </p>
+
+      <SocialWall posts={socialPosts} client:visible />
+
+      <div class="bg-buffalo-light rounded-xl p-6 text-center my-12">
+        <h3 class="font-bold text-buffalo-dark mb-2">
+          Want to be immortalized?
+        </h3>
+        <p class="text-buffalo-gray text-sm mb-4">
+          Post your Buffalo moments on X or Instagram with
+          <strong class="text-buffalo-primary">#buffalodrinkinggame</strong>.
+          We handpick the best (worst?) moments for this wall. No one is safe.
+        </p>
+      </div>
+
+      <SafetyBanner />
+    </div>
+  </section>
+</BaseLayout>

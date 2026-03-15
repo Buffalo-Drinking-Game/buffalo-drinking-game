@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DemoCarousel from '../components/DemoCarousel';
+import SafetyBanner from '../components/SafetyBanner';
+import SocialWall from '../components/SocialWall';
+import { socialPosts } from '../data/social';
+
+const featuredPosts = socialPosts.filter((p) => p.featured);
+---
+
+<BaseLayout title="Buffalo Drinking Game — The Official Rules">
+  <!-- Hero -->
+  <section
+    class="relative bg-buffalo-dark text-white py-24 md:py-36 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/images/hero-buffalo.png');"
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative max-w-3xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in drop-shadow-lg">
+        Wrong hand?<br />
+        <span class="text-buffalo-primary">Chug.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-8 animate-slide-up max-w-xl mx-auto drop-shadow">
+        One rule. No mercy. Buffalo is the drinking game that follows you
+        everywhere — for the rest of your life.
+      </p>
+      <a
+        href="/rules"
+        class="inline-block px-8 py-4 bg-buffalo-primary text-white font-bold text-lg rounded-xl hover:bg-buffalo-secondary transition-colors animate-slide-up shadow-lg"
+      >
+        Learn the Rules
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center text-buffalo-dark mb-12">
+        Dead Simple. Ruthlessly Effective.
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center animate-slide-up stagger-1">
+          <div class="w-16 h-16 mx-auto mb-4 bg-buffalo-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl font-bold text-buffalo-primary">1</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Declare Your Hand</h3>
+          <p class="text-buffalo-gray text-sm">
+            Pick your dominant hand. Say it loud. No take-backs.
+          </p>
+        </div>
+
+        <div class="text-center animate-slide-up stagger-2">
+          <div class="w-16 h-16 mx-auto mb-4 bg-buffalo-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl font-bold text-buffalo-primary">2</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Drink with the Other</h3>
+          <p class="text-buffalo-gray text-sm">
+            Every sip. Every drink. Every time. Non-dominant hand only.
+          </p>
+        </div>
+
+        <div class="text-center animate-slide-up stagger-3">
+          <div class="w-16 h-16 mx-auto mb-4 bg-buffalo-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl font-bold text-buffalo-primary">3</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Slip Up? Finish It.</h3>
+          <p class="text-buffalo-gray text-sm">
+            Someone catches you? They yell "Buffalo!" and you chug whatever's
+            in your hand. No debates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Carousel -->
+  <section class="py-16 bg-buffalo-light">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center text-buffalo-dark mb-4">
+        Think You Can Handle It?
+      </h2>
+      <p class="text-center text-buffalo-gray mb-8">
+        See what happens when you slip up — then test yourself.
+      </p>
+      <DemoCarousel client:visible />
+    </div>
+  </section>
+
+  <!-- Why Buffalo -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-buffalo-dark mb-6">
+        Why Buffalo Hits Different
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6 text-left">
+        <div class="bg-buffalo-light rounded-xl p-5">
+          <h3 class="font-bold text-buffalo-dark mb-2">Zero setup required</h3>
+          <p class="text-sm text-buffalo-gray">
+            No cards. No board. No app. Just your hands, a drink, and someone
+            watching you like a hawk.
+          </p>
+        </div>
+        <div class="bg-buffalo-light rounded-xl p-5">
+          <h3 class="font-bold text-buffalo-dark mb-2">Ends arguments instantly</h3>
+          <p class="text-sm text-buffalo-gray">
+            "That's not how we play." Yes it is. Send this link. Argument over.
+            You're welcome.
+          </p>
+        </div>
+        <div class="bg-buffalo-light rounded-xl p-5">
+          <h3 class="font-bold text-buffalo-dark mb-2">It never stops</h3>
+          <p class="text-sm text-buffalo-gray">
+            Tuesday lunch. Saturday wedding. Airport layover. Once you're in,
+            there's no getting out.
+          </p>
+        </div>
+        <div class="bg-buffalo-light rounded-xl p-5">
+          <h3 class="font-bold text-buffalo-dark mb-2">Turns strangers into friends</h3>
+          <p class="text-sm text-buffalo-gray">
+            Nothing bonds people faster than watching someone realize they just
+            got caught.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Wall -->
+  <section class="py-16 bg-buffalo-light">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center text-buffalo-dark mb-3">
+        Caught in the Wild
+      </h2>
+      <p class="text-center text-buffalo-gray mb-8 max-w-lg mx-auto">
+        Nobody is safe. Tag
+        <strong class="text-buffalo-primary">#buffalodrinkinggame</strong> to join the wall of shame.
+      </p>
+      <SocialWall
+        posts={featuredPosts}
+        limit={3}
+        showViewAll={true}
+        client:visible
+      />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-buffalo-dark text-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        You've been warned.
+      </h2>
+      <p class="text-gray-400 mb-8">
+        Learn the rules. Pick your variations. Send this to the group chat
+        and watch the chaos unfold.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/rules"
+          class="px-8 py-4 bg-buffalo-primary text-white font-bold text-lg rounded-xl hover:bg-buffalo-secondary transition-colors"
+        >
+          The Rules
+        </a>
+        <a
+          href="/variations"
+          class="px-8 py-4 bg-gray-700 text-white font-bold text-lg rounded-xl hover:bg-gray-600 transition-colors"
+        >
+          House Rules
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety Banner -->
+  <section class="py-6 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <SafetyBanner />
+    </div>
+  </section>
+</BaseLayout>
